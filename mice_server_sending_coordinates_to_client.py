@@ -26,14 +26,13 @@ def VShareITServerSocketToSendMouseCoordiantes():
     port = 12345                
     s.bind((host, port))        
     s.listen(5)                 
-    x,y = pyautogui.position()
-    positionStr = "The coordinates of Mouse are("+str(x).rjust(4)+',' + str(y).rjust(4) + ")"
+    c, addr = s.accept()    
+    print 'Got connection from', addr
     while True:
-        c, addr = s.accept()    
-        print 'Got connection from', addr
-        c.send(positionStr)
-        c.close()                # Close the connection
-
+       x,y = pyautogui.position()
+       positionStr = "The coordinates of Mouse are("+str(x).rjust(4)+',' + str(y).rjust(4) + ")"'\n'
+       c.send(positionStr)
+    c.close()                # Close the connection
 
 def main():
     VShareITServerSocketToSendMouseCoordiantes()
