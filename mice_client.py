@@ -14,10 +14,11 @@ import socket
 
 def VShareITClientSocketInit():
     s = socket.socket()         
-    host = socket.gethostname() 
+    host = socket.gethostname()
     port = 12345                
-    s.connect((host, port))
-    print s.recv(1024)
+    s.connect(("192.168.56.101", port))
+    while True:
+        print s.recv(1024)
     s.close                     
 
 def main():
