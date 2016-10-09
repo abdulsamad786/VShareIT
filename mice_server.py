@@ -16,11 +16,13 @@
 import socket               
 import sys
 import pyautogui
+import time
 
 print('Press Ctrl-C to quit.')
 
 def VShareITServerSocketToSendMouseCoordiantes():
     """Function Initializes the Eth Socket for Communication between the Server & Client"""
+    d=''
     s = socket.socket()         
     host = socket.gethostname() 
     port = 12345                
@@ -30,9 +32,12 @@ def VShareITServerSocketToSendMouseCoordiantes():
     print 'Got connection from', addr
     while True:
        x,y = pyautogui.position()
-       positionStr = str(x).rjust(4)+',' + str(y).rjust(4) 
+       positionStr = str(x)+',' + str(y) 
+       #positionStr = str(x).rjust()+',' + str(y).rjust(4) 
+       print positionStr
        c.send(positionStr)
-
+       time.sleep(1)
+    #   pyautogui.moveTo(x,y)       
 def main():
     VShareITServerSocketToSendMouseCoordiantes()
 
