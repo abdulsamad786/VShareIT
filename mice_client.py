@@ -1,4 +1,5 @@
 #!/usr/bin/python         
+# -*- coding: latin-1 -*-
 
 #This program is written for a product named VShareIT. Feel free to use 
 #this code for other projects. We dont't take responsibility for further 
@@ -11,6 +12,9 @@
 #Abdul Samad ( Lead Developer )
 
 import socket               
+import pyautogui
+import string
+import return_mousecoordinates
 
 def VShareITClientSocketInit():
     s = socket.socket()         
@@ -18,9 +22,12 @@ def VShareITClientSocketInit():
     port = 12345                
     s.connect(("192.168.56.101", port))
     while True:
-        print s.recv(1024)
+        my_cor =  s.recv(1024)
+        print my_cor
+        x=int(my_cor.split(',')[0])
+        y=int(my_cor.split(',')[1])
+        return_mousecoordinates.move_to_coordinates(x,y)
     s.close                     
-
 def main():
     VShareITClientSocketInit()
 
