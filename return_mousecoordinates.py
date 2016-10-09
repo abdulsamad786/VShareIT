@@ -11,11 +11,11 @@ executing this file
 """
 import pyautogui,sys
 
-def move_to_coordinates(x,y,t):
-    return  pyautogui.moveTo(x,y,t)
+def move_to_coordinates(x,y):
+    return  pyautogui.moveTo(x,y)
     
 def main():
-    mv_coordinates= move_to_coordinates(100,200,2)
+    mv_coordinates= move_to_coordinates(100,200)
     print mv_coordinates
 
 
